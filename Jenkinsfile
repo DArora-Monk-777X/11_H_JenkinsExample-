@@ -9,14 +9,17 @@ pipeline {
                 sh 'docker --version'
                 sh 'docker-compose --version'
                 echo 'Deploy stage executing...'
-                sh 'ls'
-                sh 'cd workspace'
-                sh 'ls'
-                sh 'ie-app-publisher-linux ws init'
-                sh 'cd ..' 
-                sh 'cp -RT src ./workspace'
-                sh 'cd workspace'
-                sh 'ie-app-publisher-linux de c -u http://localhost:2375'
+          
+                sh '''
+                    ls
+                    cd workspace
+                    ls
+                    ie-app-publisher-linux ws init
+                    cd ..
+                    cp -RT src ./workspace
+                    cd workspace
+                    ie-app-publisher-linux de c -u http://localhost:2375
+                '''
 
             }
         }
