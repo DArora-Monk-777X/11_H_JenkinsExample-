@@ -1,0 +1,12 @@
+version: '2.4'
+services:
+  matrix:
+    image: matrix
+    build: .
+    ports:
+      - '8080:80'
+    mem_limit: 200mb
+    restart: always
+    volumes:
+      - './publish/:/publish/'
+      - './cfg-data/:/cfg-data/'
