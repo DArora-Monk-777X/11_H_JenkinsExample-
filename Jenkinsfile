@@ -10,7 +10,6 @@ pipeline {
                 sh 'docker-compose --version'
                 echo 'Deploy stage executing...'
                 sh 'ls'
-                sh 'mkdir workspace'
                 sh 'cd workspace'
                 sh 'ls'
                 sh 'ie-app-publisher-linux ws init'
