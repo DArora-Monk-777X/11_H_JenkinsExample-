@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'ie-app-publisher-linux --version'
             }
         }
         stage('Test') {
