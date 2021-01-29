@@ -11,6 +11,7 @@ pipeline {
                 echo 'Deploy stage executing...'
                 sh 'mkdir workspace'
                 sh 'cd workspace'
+                sh 'ls'
                 sh 'ie-app-publisher-linux ws init'
                 sh 'cd ..' 
                 sh 'cp -RT src ./workspace'
