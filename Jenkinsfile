@@ -7,6 +7,9 @@ pipeline {
                          args '--privileged'
                        }
             }
+            environment {
+                HOME = '.'
+             }
             steps {
                 sh 'ls'
                 echo 'hello world !'
@@ -15,3 +18,4 @@ pipeline {
         }
     }
 }
+ 
