@@ -8,7 +8,7 @@ pipeline {
                 sh 'ie-app-publisher-linux --version'
                 sh 'docker --version'
                 sh 'docker-compose --version'
-                echo 'Deploy stage executing...'
+                echo 'Deploy stage executing ...'
           
                 sh '''
                     ls
