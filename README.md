@@ -1,3 +1,2 @@
-# JenkinsExample...
-
+# JenkinsExample
 
