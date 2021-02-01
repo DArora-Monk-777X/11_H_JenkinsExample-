@@ -8,5 +8,4 @@ node {
              */
             sh 'ie-app-publisher-linux --version'
         }
-    }
 }
