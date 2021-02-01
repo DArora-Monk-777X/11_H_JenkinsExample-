@@ -12,7 +12,7 @@ pipeline {
           
                 sh '''
                     ls
-                    rm -d workspace
+                    rm -rf workspace
                     mkdir workspace
                     cd workspace
                     ls
