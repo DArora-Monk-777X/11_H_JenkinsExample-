@@ -6,6 +6,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'hello world!'
+                sh 'ie-app-publisher-linux'
             }
         }
     }
