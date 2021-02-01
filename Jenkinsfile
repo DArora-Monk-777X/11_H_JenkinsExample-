@@ -1,10 +1,10 @@
 pipeline {
-    agent {
-        docker { image 'halamap/publisher-cli:0.0.3' }
-    }
+    agent none
     stages {
         stage('Test') {
-            steps {
+            agent {
+                docker { image 'halamap/publisher-cli:0.0.1' }
+            }steps {
                 echo 'hello world !'
                 sh 'ie-app-publisher-linux'
             }
