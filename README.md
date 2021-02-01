@@ -1,2 +1,2 @@
 # JenkinsExample
-Testin 1,2,3...
+Testin 
