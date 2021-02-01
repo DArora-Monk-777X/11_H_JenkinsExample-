@@ -12,7 +12,6 @@ pipeline {
           
                 sh '''
                     ls
-                    mkdir workspace
                     cd workspace
                     ls
                     ie-app-publisher-linux ws init
