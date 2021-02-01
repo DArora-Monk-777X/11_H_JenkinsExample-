@@ -1,11 +1,12 @@
-node {
-    checkout scm
-       
-        docker.image('halamap/publisher-cli:0.0.3').inside {
-            /*
-             * Run some tests which require MySQL, and assume that it is
-             * available on the host name `db ..`
-             */
-            sh 'ie-app-publisher-linux -h'
+pipeline {
+    agent {
+        docker { image 'halamap/publisher-cli:0.0.3' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'ie-app-publisher-linux -h'
+            }
         }
     }
+}
