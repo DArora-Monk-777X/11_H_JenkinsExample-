@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'halamap/publisher-cli:0.0.3' }
+        docker { image 'halamap/publisher-cli:0.0.1' }
     }
     stages {
         stage('Test') {
