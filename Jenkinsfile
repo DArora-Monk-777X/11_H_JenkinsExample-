@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'ie-app-publisher-linux -h'
+                sh 'ie-app-publisher-linux --version'
             }
         }
     }
