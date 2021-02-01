@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'ie-app-publisher-linux --version'
+                sh 'sudo ie-app-publisher-linux --version'
             }
         }
     }
