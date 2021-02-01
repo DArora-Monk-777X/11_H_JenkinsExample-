@@ -1,11 +1,11 @@
 pipeline {
     agent {
-        docker { image 'node:14-alpine' }
+        docker { image 'halamap/publisher-cli:0.0.1' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                echo 'hello world!'
             }
         }
     }
