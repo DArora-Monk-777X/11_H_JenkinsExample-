@@ -16,6 +16,7 @@ node {
           
                 sh 'ie-app-publisher-linux -h'
                 sh """
+                    ls
                     cd src
                     docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
