@@ -8,7 +8,7 @@ node {
           
                  }
       
-             docker.image('halamap/publisher-cli:0.0.1').inside(""" --link ${c.id}:db --privileged """) {
+             docker.image('halamap/publisher-cli:0.0.2').inside(""" --link ${c.id}:db --privileged """) {
   
             /*
              * Run some tests which require MySQL, and assume that it is
