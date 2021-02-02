@@ -25,7 +25,7 @@ node {
                     rm -rf workspace
                     mkdir workspace
                     cd workspace
-                    rm -rf ../*
+                    rm -rvf ./*
                     ls -a
                     ie-app-publisher-linux ws init
                     cd ..
