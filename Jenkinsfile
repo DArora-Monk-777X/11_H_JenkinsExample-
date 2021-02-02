@@ -1,12 +1,13 @@
 node {
     checkout scm
-    withEnv(['HOME=.']) {
+    
         stage ('Build') {
              docker.image('docker:18.09-dind').withRun(""" --privileged  """) { c ->
                 docker.image('docker:18.09-dind').inside(""" --link ${c.id}:db  """) {
             /* Wait until mysql service is up */
           
                  }
+             withEnv(['HOME=.']) {
              docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged """) {
   
             /*
@@ -25,6 +26,7 @@ node {
                     ls
                     ie-app-publisher-linux ws init
                     cd ..
+                    
                     cp -RT src workdir
                     cd workdir
                     echo "deploying app..."
