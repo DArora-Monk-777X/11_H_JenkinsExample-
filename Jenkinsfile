@@ -1,7 +1,7 @@
 node {
     checkout scm
     withEnv(['HOME=.']) {
-    docker.image('docker:18.09-dind').withRun(""" --privileged -e "HOME = '.'" """) { c ->
+    docker.image('docker:18.09-dind').withRun(""" --privileged  """) { c ->
         docker.image('docker:18.09-dind').inside(""" --link ${c.id}:db  """) {
             /* Wait until mysql service is up */
           
