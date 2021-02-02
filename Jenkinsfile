@@ -7,7 +7,7 @@ node {
             /* Wait until mysql service is up */
           
                  }
-             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db """) {
+             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db -v ./workdir:/app/src/workspace """) {
   
             /*
              * Run some tests which require MySQL, and assume that it is
@@ -21,14 +21,13 @@ node {
                     docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
                     cd ..
-                    rm -rf ./workdir/*
+                    cp -RT src workdir
                     cd workdir
-                    ie-app-publisher-linux ws init
                     echo "deploying app..."
                     ie-app-publisher-linux de c -u http://db:2375
                     export IE_SKIP_CERTIFICATE=true
                     ie-app-publisher-linux em li -u "$IEM_URL" -e $USER_NAME -p $PSWD
-                    ie-app-publisher-linux em app cuv -a $APP_ID -v $APP_VERSION -y ./src/docker-compose.prod.yml -n '{"matrix":[{"name":"matrix","protocol":"HTTP","port":"80","headers":"","rewriteTarget":"/"}]}' -s 'matrix' -t 'FromBoxReverseProxy' -u "matrix" -r "/"
+                    ie-app-publisher-linux em app cuv -a $APP_ID -v $APP_VERSION -y ./docker-compose.prod.yml -n '{"matrix":[{"name":"matrix","protocol":"HTTP","port":"80","headers":"","rewriteTarget":"/"}]}' -s 'matrix' -t 'FromBoxReverseProxy' -u "matrix" -r "/"
                     ie-app-publisher-linux em app uuv -a $APP_ID -v $APP_VERSION
                 """
              }
