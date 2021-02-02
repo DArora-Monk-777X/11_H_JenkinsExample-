@@ -5,7 +5,7 @@ node {
             /* Wait until mysql service is up */
  
         }
-        docker.image('halamap/publisher-cli:0.0.3').inside('"--link ${c.id}:db" -e "HOME = '.'"') {
+        docker.image('halamap/publisher-cli:0.0.3').inside(' "--entrypoint=''" "--link ${c.id}:db" -e "HOME = '.'"') {
   
             /*
              * Run some tests which require MySQL, and assume that it is
