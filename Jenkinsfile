@@ -16,7 +16,16 @@ node {
           
                 sh 'ie-app-publisher-linux -h'
                 sh """
+                    cd src
+                    docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
+                    cd ..
+                    echo "deploying app..."
+                    cp -RT src /app/src/workspace
+                    cd /app/src/workspace
+                    ie-app-publisher-linux de c -u http://db:2375
+                    export IE_SKIP_CERTIFICATE=true
+                    ie-app-publisher-linux em li -u "$IEM_URL" -e $USER_NAME -p $PSWD
                 """
              }
           }
