@@ -21,6 +21,8 @@ node {
                     docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
                     cd ..
+                    cd workspace
+                    ie-app-publisher-linux ws init
                     echo "deploying app..."
                     ie-app-publisher-linux de c -u http://db:2375
                     export IE_SKIP_CERTIFICATE=true
