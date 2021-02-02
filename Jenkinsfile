@@ -25,6 +25,8 @@ node {
                     ie-app-publisher-linux de c -u http://db:2375
                     export IE_SKIP_CERTIFICATE=true
                     ie-app-publisher-linux em li -u "$IEM_URL" -e $USER_NAME -p $PSWD
+                    ie-app-publisher-linux em app cuv -a $APP_ID -v $APP_VERSION -y ./src/docker-compose.prod.yml -n '{"matrix":[{"name":"matrix","protocol":"HTTP","port":"80","headers":"","rewriteTarget":"/"}]}' -s 'matrix' -t 'FromBoxReverseProxy' -u "matrix" -r "/"
+                    ie-app-publisher-linux em app uuv -a $APP_ID -v $APP_VERSION
                 """
              }
           }
