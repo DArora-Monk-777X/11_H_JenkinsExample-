@@ -15,6 +15,9 @@ node {
              */
           
                 sh 'ie-app-publisher-linux -h'
+                sh """
+                    docker --host tcp://db:2375 images
+                """
              }
           }
         }
