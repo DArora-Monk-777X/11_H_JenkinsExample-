@@ -11,6 +11,10 @@ node {
              * Run some tests which require MySQL, and assume that it is
              * available on the host name `db`
              */
+            sh """
+                sudo chown -R $USER:$GROUP ~/.npm
+                sudo chown -R $USER:$GROUP ~/.config
+            """
             sh 'ie-app-publisher-linux -h'
         }
     }
