@@ -19,7 +19,7 @@ node {
                 sh """
                     ls -a
                     cd workdir
-                    ls
+                    ls -a
                     cd src
                     docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
