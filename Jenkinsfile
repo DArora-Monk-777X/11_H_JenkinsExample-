@@ -7,7 +7,7 @@ node {
             /* Wait until mysql service is up */
           
                  }
-             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db """) {
+             docker.image('halamap/publisher-cli:0.0.1').inside(""" --link ${c.id}:db """) {
   
             /*
              * Run some tests which require MySQL, and assume that it is
@@ -21,9 +21,14 @@ node {
                     docker --host tcp://db:2375 images
                     cd ..
                     echo "deploying app..."
+                    rm -rf workspace
+                    mkdir workspace
+                    cd workspace
                     ls
-                    cp -RT src /app/src/workspace
-                    cd /app/src/workspace
+                    ie-app-publisher-linux ws init
+                    cd ..
+                    cp -RT src ./workspace
+                    cd workspace
                     ie-app-publisher-linux de c -u http://db:2375
                     export IE_SKIP_CERTIFICATE=true
                     ie-app-publisher-linux em li -u "$IEM_URL" -e $USER_NAME -p $PSWD
