@@ -21,7 +21,9 @@ node {
                     docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
                     cd ..
-                    cd workspace
+                    rm -rf workspace
+                    mkdir workdir
+                    cd workdir
                     ie-app-publisher-linux ws init
                     echo "deploying app..."
                     ie-app-publisher-linux de c -u http://db:2375
