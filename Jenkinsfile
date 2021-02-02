@@ -21,6 +21,7 @@ node {
                     docker --host tcp://db:2375 images
                     cd ..
                     echo "deploying app..."
+                    ls
                     cp -RT src /app/src/workspace
                     cd /app/src/workspace
                     ie-app-publisher-linux de c -u http://db:2375
