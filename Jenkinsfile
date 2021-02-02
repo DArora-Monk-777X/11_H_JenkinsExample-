@@ -7,7 +7,7 @@ node {
             /* Wait until mysql service is up */
           
                  }
-             withEnv(['HOME=.']) {
+      
              docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged """) {
   
             /*
@@ -38,6 +38,6 @@ node {
                 """
              }
           }
-        }
+        
     }
 }
