@@ -1,10 +1,11 @@
 node {
     checkout scm
-    docker.image('docker:18.09-dind') { c ->
-        docker.image('docker:18.09-dind').inside("--link ${c.id}:db") {
-          
+    docker.image('mysql:5').withRun('-e "MYSQL_ROOT_PASSWORD=my-secret-pw"') { c ->
+        docker.image('mysql:5').inside("--link ${c.id}:db") {
+            /* Wait until mysql service is up */
+            sh 'while ! mysqladmin ping -hdb --silent; do sleep 1; done'
         }
-        docker.image('halamap/publisher-cli:0.0.3').inside("--link ${c.id}:db") {
+        docker.image('centos:7').inside("--link ${c.id}:db") {
             /*
              * Run some tests which require MySQL, and assume that it is
              * available on the host name `db`
