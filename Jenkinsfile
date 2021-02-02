@@ -14,9 +14,7 @@ pipeline {
                 sh 'ls'
                 echo 'hello world!'
                 sh 'ie-app-publisher-linux -h'
-                sh '''
-                    ie-app-publisher-linux de c -u http://localhost:2375
-                ''' 
+ 
             }
         }
     }
