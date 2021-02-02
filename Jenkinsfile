@@ -15,8 +15,6 @@ pipeline {
                 echo 'hello world!'
                 sh 'ie-app-publisher-linux -h'
                 sh '''
-                    cp -RT src /app/src/workspace
-                    cd /app/src/workspace
                     ie-app-publisher-linux de c -u http://localhost:2375
                 ''' 
             }
