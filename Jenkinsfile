@@ -12,7 +12,7 @@ pipeline {
              }
             steps {
                 sh 'ls'
-                echo 'hello world !!!'
+                echo 'hello world'
                 sh 'ie-app-publisher-linux -h'
             }
         }
