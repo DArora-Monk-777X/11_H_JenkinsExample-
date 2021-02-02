@@ -17,7 +17,7 @@ node {
           
                 sh 'ie-app-publisher-linux -h'
                 sh """
-                    docker exec mycon ls
+                    docker --host tcp://db:2375 exec mycon ls
                     ls -a
                     cd src
                     docker-compose --host tcp://db:2375 build
