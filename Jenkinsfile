@@ -17,16 +17,14 @@ node {
           
                 sh 'ie-app-publisher-linux -h'
                 sh """
-                    ls -a
-                    cd workdir
-                    ls -a
+             
                     cd src
                     docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
                     cd ..
                     rm -rfv /workdir/*
                     cd workdir
-                    ls
+                    ls -a
                     ie-app-publisher-linux ws init
                     cd ..
                     cp -RT src workdir
