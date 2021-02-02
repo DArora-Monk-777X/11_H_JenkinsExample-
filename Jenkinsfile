@@ -22,14 +22,6 @@ node {
                     docker --host tcp://db:2375 images
                     cd ..
                     echo "deploying app..."
-                    rm -rf workspace
-                    mkdir workspace
-                    cd workspace
-                    ls
-                    ie-app-publisher-linux ws init
-                    cd ..
-                    cp -RT src ./workspace
-                    cd workspace
                     ie-app-publisher-linux de c -u http://db:2375
                     export IE_SKIP_CERTIFICATE=true
                     ie-app-publisher-linux em li -u "$IEM_URL" -e $USER_NAME -p $PSWD
