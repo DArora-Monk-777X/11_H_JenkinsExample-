@@ -8,7 +8,7 @@ node {
           
                  
                 }
-             docker.image('halamap/publisher-cli:0.0.2').inside(""" --link ${c.id}:db --privileged """) {
+             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged -v /workspace:app/src/workspace """) {
   
             /*
              * Run some tests which require MySQL, and assume that it is
@@ -22,15 +22,7 @@ node {
                     docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
                     cd ..
-                    rm -rf workspace
-                    mkdir workspace
                     cd workspace
-                    rm -rvf ./*
-                    ls -a
-                    ie-app-publisher-linux ws init
-                    cd ..
-                    cp -RT src workdir
-                    cd workdir
                     echo "deploying app..."
                     ie-app-publisher-linux de c -u http://db:2375
                     export IE_SKIP_CERTIFICATE=true
