@@ -22,9 +22,10 @@ node {
                     docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
                     cd ..
-                    rm -rf workdir
+                    rm -rf workspace
                     mkdir workspace
                     cd workspace
+                    rm -v .*
                     ls -a
                     ie-app-publisher-linux ws init
                     cd ..
