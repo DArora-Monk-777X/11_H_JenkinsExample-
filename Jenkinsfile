@@ -8,7 +8,7 @@ node {
           
                  
                 }
-             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged -v /workspace:/app/src/workspace """) {
+             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged -v /workspace:/app/src/workspace --name mycon  """) {
   
             /*
              * Run some tests which require MySQL, and assume that it is
@@ -17,6 +17,7 @@ node {
           
                 sh 'ie-app-publisher-linux -h'
                 sh """
+                    docker exec mycon ls
                     ls -a
                     cd src
                     docker-compose --host tcp://db:2375 build
