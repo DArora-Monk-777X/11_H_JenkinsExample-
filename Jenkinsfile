@@ -3,11 +3,7 @@ node {
     withEnv(['HOME=.']) {
         stage ('Build') {
              docker.image('docker:18.09-dind').withRun(""" --privileged  """) { c ->
-                docker.image('docker:18.09-dind').inside(""" --link ${c.id}:db  """) {
-            /* Wait until mysql service is up */
-          
-                 
-                }
+           
              docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged -v /workspace:/app/src/workspace --name mycon --entrypoint=''  """) {
   
             /*
