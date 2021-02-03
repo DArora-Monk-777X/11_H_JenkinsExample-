@@ -4,7 +4,7 @@ node {
         stage ('Build') {
              docker.image('docker:18.09-dind').withRun(""" --privileged  """) { c ->
            
-             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged  """) {
+             docker.image('halamap/publisher-cli:0.0.1').inside(""" --link ${c.id}:db --privileged  """) {
   
             /*
              * Run some tests which require MySQL, and assume that it is
@@ -13,14 +13,16 @@ node {
           
                 sh 'ie-app-publisher-linux -h'
                 sh """
-                    
-                    ls -a
+                   
                     cd src
                     docker-compose --host tcp://db:2375 build
                     docker --host tcp://db:2375 images
                     cd ..
-                    cd workd
+                    rm -rf workspace
+                    mkdir workspace
+                    cd workspace
                     ie-app-publisher-linux ws init
+                    cd ..
                     cp -RT src ./workspace
                     cd workspace
                     echo "deploying app..."
