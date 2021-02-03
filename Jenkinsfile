@@ -21,6 +21,7 @@ node {
                     rm -rf workspace
                     mkdir workspace
                     cd workspace
+                    ls
                     ie-app-publisher-linux ws init
                     cd ..
                     cp -RT src ./workspace
