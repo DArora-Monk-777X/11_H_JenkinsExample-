@@ -4,7 +4,7 @@ node {
         stage ('Build') {
              docker.image('docker:18.09-dind').withRun(""" --privileged  """) { c ->
            
-             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged  """) {
+             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged -u root """) {
   
             /*
              * Run some tests which require MySQL, and assume that it is
