@@ -1,7 +1,7 @@
 version: '2.4'
 services:
-  matrix:
-    image: matrix
+  hello-edge:
+    image: hello-edge
     mem_limit: 200mb
     restart: always
     volumes:
