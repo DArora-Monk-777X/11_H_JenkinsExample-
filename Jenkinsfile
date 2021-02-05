@@ -1,11 +1,5 @@
 pipeline {
     agent any
-
-    
-    environment {
-        VERSION = ""
-        NUMBER = 1
-    }
     stages {
         stage('Deploy') {
             steps {
@@ -15,17 +9,7 @@ pipeline {
                 sh 'docker-compose --version'
                 echo 'Deploy stage executing ...'
           
-                script {
-                    if (env.BUILD_NUMBER < 10 && env.BUILD_NUMBER > 0) {
-                        environment {
-                            VERSION = "0.0." // overrides pipeline level NAME env variable
-                            NUMBER = "1" // overrides the default BUILD_NUMBER
-                        }
-                       echo "$VERSION$BUILD_NUMBER/$NUMBER"
-                    } else {
-        
-                    }
-                
+           
                 sh '''
                     ls
                     rm -rf workspace
