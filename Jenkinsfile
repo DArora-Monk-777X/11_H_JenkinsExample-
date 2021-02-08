@@ -3,7 +3,7 @@ node {
     withEnv(['HOME=.']) {
         stage ('Build') {
              docker.image('docker:18.09-dind').withRun(""" --privileged  """) { c ->
-             withCredentials('credentials-id') {    
+             docker.withRegistry( '','credentials-id') {    
              docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged -u root """) {
   
             /*
