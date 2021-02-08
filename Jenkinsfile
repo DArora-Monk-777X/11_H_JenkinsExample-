@@ -3,8 +3,8 @@ node {
     withEnv(['HOME=.']) {
         stage ('Build') {
              docker.image('docker:18.09-dind').withRun(""" --privileged  """) { c ->
-             def publisher = docker.build("publisher") 
-             publisher.inside(""" --link ${c.id}:db --privileged -u root """) {
+                 
+             docker.image('halamap/publisher-cli:0.0.3').inside(""" --link ${c.id}:db --privileged  """) {
   
             /*
              * Run some tests which require MySQL, and assume that it is
