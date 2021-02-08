@@ -28,6 +28,8 @@ node {
                     ie-app-publisher-linux em app uuv -a $APP_ID -v 0.0.$BUILD_NUMBER
                 """
              }
+                 
+             }
                 
           }
         }
