@@ -3,7 +3,7 @@ node {
     withEnv(['HOME=.']) {
         stage ('Build') {
              docker.image('docker:18.09-dind').withRun(""" --privileged  """) { c ->
-             def publisher = docker.build("publisher", "./") 
+             def publisher = docker.build("publisher") 
              publisher.inside(""" --link ${c.id}:db --privileged -u root """) {
   
             /*
